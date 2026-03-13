@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 StockBro – Trading Simulator</title>
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Stock<span>Bro</span> 📈</div>
+        <div class="balance-display">
+            <div class="balance-label">💵 Cash Balance</div>
+            <div class="balance-amount" id="balanceDisplay">$10,000.00</div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- EXPLAINER -->
+        <div class="explain-box">
+            🎓 <strong>How to Play:</strong> Pick a stock → Enter quantity → Hit <strong
+                style="color:var(--green)">BUY</strong> to buy or <strong style="color:var(--red)">SELL</strong> to
+            sell.
+            Prices change every second (like real markets!). Goal: Grow your <strong>$10,000</strong> into as much as
+            possible!
+            📊 <em>Green = price going UP &nbsp;|&nbsp; Red = price going DOWN</em>
+        </div>
+
+        <!-- NET WORTH BAR -->
+        <div class="net-worth-bar">
+            <div class="nw-item">
+                <span class="nw-label">💵 Cash</span>
+                <span class="nw-value" id="nwCash" style="color:var(--yellow)">$10,000</span>
+            </div>
+            <div class="nw-item">
+                <span class="nw-label">📦 Holdings</span>
+                <span class="nw-value" id="nwHoldings" style="color:var(--blue)">$0</span>
+            </div>
+            <div class="nw-item">
+                <span class="nw-label">🏦 Net Worth</span>
+                <span class="nw-value" id="nwTotal" style="color:var(--green)">$10,000</span>
+            </div>
+            <div class="nw-item">
+                <span class="nw-label">📈 P&L</span>
+                <span class="nw-value" id="nwPnl">$0.00</span>
+            </div>
+        </div>
+
+        <!-- CHART SECTION -->
+        <div class="chart-section">
+            <div class="stock-tabs" id="stockTabs"></div>
+            <div class="stock-header">
+                <div>
+                    <div class="stock-name" id="stockSymbol">AAPL</div>
+                    <div class="stock-price up" id="stockPrice">$150.00</div>
+                    <div class="price-change" id="priceChange">+0.00 (0.00%)</div>
+                </div>
+                <div class="chart-info">
+                    <div class="info-item">
+                        <span class="info-label">Open</span>
+                        <span class="info-value" id="infoOpen">–</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">High</span>
+                        <span class="info-value up" id="infoHigh">–</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Low</span>
+                        <span class="info-value down" id="infoLow">–</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Volume</span>
+                        <span class="info-value" id="infoVol">–</span>
+                    </div>
+                </div>
+            </div>
+            <div class="speed-row">
+                <span class="speed-label">⏩ Speed:</span>
+                <input type="range" class="speed-range" id="speedRange" min="200" max="3000" value="1200" step="100">
+                <span class="speed-label" id="speedLabel">1.2s</span>
+            </div>
+        </div>
+
+        <!-- TRADING PANEL -->
+        <div class="trade-section">
+
+            <!-- ORDER PANEL -->
+            <div class="card">
+                <div class="card-title">🛒 Place Order</div>
+                <div class="qty-row">
+                    <span class="qty-label">Qty:</span>
+                    <button class="qty-btn" id="qtyMinus">−</button>
+                    <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="999">
+                    <button class="qty-btn" id="qtyPlus">+</button>
+                </div>
+                <div class="cost-preview">
+                    <span>Est. Cost</span>
+                    <span id="costPreview">$150.00</span>
+                </div>
+                <div class="trade-btns">
+                    <button class="btn-buy" id="btnBuy">▲ BUY</button>
+                    <button class="btn-sell" id="btnSell">▼ SELL</button>
+                </div>
+            </div>
+
+            <!-- PORTFOLIO -->
+            <div class="card">
+                <div class="card-title">📦 My Portfolio</div>
+                <div id="portfolioList">
+                    <div class="empty-port">No stocks yet. Start buying!</div>
+                </div>
+            </div>
+
+            <!-- TRADE LOG -->
+            <div class="card">
+                <div class="card-title">📋 Trade History</div>
+                <div class="log-container" id="tradeLog">
+                    <div class="empty-port">No trades yet...</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="toast">📢 Message</div>
+
+    <script src ="script.js"></script>
+</body>
+
+</html>
